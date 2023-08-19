@@ -129,8 +129,12 @@ public abstract class InfiniteAdapter<VH extends RecyclerView.ViewHolder> extend
      */
     public void moreDataLoaded(int positionStart, int itemCount) {
         mIsLoading = false;
-        //notifyItemRemoved(positionStart); // remove the loading view
-        //notifyItemRangeInserted(positionStart, itemCount);
+        notifyItemRemoved(positionStart); // remove the loading view
+        notifyItemRangeInserted(positionStart, itemCount);
+    }
+
+    public void reloadData() {
+        mIsLoading = false;
         notifyDataSetChanged();
     }
 
